@@ -8,7 +8,7 @@ API_KEY = os.getenv("AI_API_KEY")
 API_URL = os.getenv("AI_API_URL")
 
 
-async def generate_ai_response(user_id: str, user_message: str):
+async def generate_ai_response(user_id: str, messages: List[dict):
 
     # AI stilini shu yerda belgilaymiz:
     system_prompt = """You are a friendly, humorous Uzbek AI assistant. 
@@ -17,10 +17,7 @@ async def generate_ai_response(user_id: str, user_message: str):
 
     payload = {
         "model": "gpt-4o-mini",  # keyin o'zgartiramiz
-        "messages": [
-            {"role": "system", "content": system_prompt},
-            {"role": "user", "content": user_message}
-        ]
+        "messages": messages
     }
 
     headers = {
