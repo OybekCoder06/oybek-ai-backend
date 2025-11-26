@@ -1,5 +1,8 @@
 from fastapi import FastAPI
 from app.routes.chat import router as chat_router
+from app.database import Base, engine
+Base.metadata.create_all(bind=engine)
+
 
 app = FastAPI(
     title="OybekCoder AI Backend",
